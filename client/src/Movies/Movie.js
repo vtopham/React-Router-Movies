@@ -1,11 +1,25 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import {useRouteMatch, useParams} from "react-router-dom";
+
 
 const Movie = (props) => {
   const [movie, setMovie] = useState();
+  const {path, url} = useRouteMatch();
+  
+
  
   useEffect(() => {
-    const id = 1;
+    let tempID = ""
+
+    for (let i = url.lastIndexOf("/") + 1; i < url.length; i++) {
+      tempID = tempID + url.charAt(i);
+    }
+
+    const id = tempID;
+
+    
+
     // change ^^^ that line and grab the id from the URL
     // You will NEED to add a dependency array to this effect hook
 
@@ -18,7 +32,7 @@ const Movie = (props) => {
           console.error(error);
         });
 
-  },[]);
+  },[movie]);
   
   // Uncomment this only when you have moved on to the stretch goals
   // const saveMovie = () => {
