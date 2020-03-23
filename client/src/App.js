@@ -15,7 +15,7 @@ const App = () => {
   return (
     <div>
       <SavedList list={savedList} />
-      <Route path = "/">
+      <Route exact path = "/movies"> {/*this doesn't work with just "/" on my server*/}
         <MovieList/>
       </Route>
       <Route path = "/movies/:id">
